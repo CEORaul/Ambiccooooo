@@ -3,31 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ambicco - Tecnologia para Clínicas</title>
+  <title>Ambicco - Automação para Clínicas</title>
   <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/main.js"></script>
 </head>
 <body>
-  <header class="header">
-    <h1>Ambicco</h1>
-    <p>Tecnologia que reduz faltas e aumenta a receita da sua clínica</p>
-  </header>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">AMBICCO</div>
+    <ul>
+      <li><a href="#benefits">Benefícios</a></li>
+      <li><a href="#parceiros">Parceiros</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
 
-  <section class="parceiros">
-    <h2>Clínicas Parceiras</h2>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Reduza faltas e aumente a receita da sua clínica</h1>
+      <p>Automatize notificações e lembretes para seus pacientes e veja a produtividade crescer.</p>
+      <button onclick="document.getElementById('contato').scrollIntoView({behavior: 'smooth'})">Solicitar Demo</button>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section class="benefits" id="benefits">
+    <div class="card">
+      <h3>Redução de Faltas</h3>
+      <p>Lembretes automáticos garantem presença e organização.</p>
+    </div>
+    <div class="card">
+      <h3>Aumento de Receita</h3>
+      <p>Pacientes mais pontuais resultam em mais faturamento.</p>
+    </div>
+    <div class="card">
+      <h3>Gestão Inteligente</h3>
+      <p>Controle tudo em uma única plataforma intuitiva.</p>
+    </div>
+  </section>
+
+  <!-- PARCEIROS -->
+  <section class="parceiros" id="parceiros">
+    <h2>Nossos Parceiros</h2>
     <div class="logos">
-      <div class="logo-slide">
-        <img src="https://via.placeholder.com/150x80?text=Clínica+1" alt="Clínica 1">
-        <img src="https://via.placeholder.com/150x80?text=Clínica+2" alt="Clínica 2">
-        <img src="https://via.placeholder.com/150x80?text=Clínica+3" alt="Clínica 3">
-        <img src="https://via.placeholder.com/150x80?text=Clínica+4" alt="Clínica 4">
+      <div class="logos-slide">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Apollo_Hospitals_Logo.png" alt="Apollo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Cleveland_Clinic_logo.svg" alt="Cleveland">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Mayo_Clinic_logo.svg" alt="Mayo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Hospital_Alem%C3%A3o_Oswaldo_Cruz_logo.png" alt="Oswaldo Cruz">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Hopital_logo_example.svg" alt="Clínica Fictícia">
       </div>
     </div>
   </section>
 
-  <footer class="footer">
-    <p>© 2025 Ambicco. Todos os direitos reservados.</p>
-  </footer>
+  <!-- FORMULÁRIO -->
+  <section class="form-section" id="contato">
+    <h2>Entre em Contato</h2>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Seu nome" required>
+      <input type="email" id="email" placeholder="Seu email" required>
+      <textarea id="message" rows="4" placeholder="Sua mensagem" required></textarea>
+      <button type="submit" class="submit">Enviar</button>
+    </form>
+  </section>
 
-  <script src="js/main.js"></script>
+  <!-- POP-UP -->
+  <div class="popup" id="popup">Mensagem enviada com sucesso!</div>
 </body>
 </html>
