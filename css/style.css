@@ -1,0 +1,45 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f9f9f9;
+  color: #222;
+  text-align: center;
+}
+
+.header {
+  background: #4CAF50;
+  color: white;
+  padding: 40px 0;
+}
+
+.parceiros {
+  margin: 50px 0;
+}
+
+.logos {
+  overflow: hidden;
+  position: relative;
+}
+
+.logo-slide {
+  display: flex;
+  gap: 30px;
+  animation: scroll 10s linear infinite;
+}
+
+.logo-slide img {
+  width: 150px;
+  height: 80px;
+  object-fit: contain;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.footer {
+  background: #333;
+  color: white;
+  padding: 20px 0;
+}
