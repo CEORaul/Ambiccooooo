@@ -9,6 +9,8 @@
   <meta property="og:description" content="Reduza faltas e aumente receita com nossa plataforma inteligente">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Link para CSS externo -->
+  <link rel="stylesheet" href="css/style.css">
   <style>
     /* VARIÁVEIS E RESET */
     :root {
@@ -47,49 +49,945 @@
     }
     
     /* ANIMAÇÕES */
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
-    @keyframes slideInLeft { from { transform: translateX(-100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-    @keyframes slideInRight { from { transform: translateX(100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
     
-    .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
-    .animate-float { animation: float 5s ease-in-out infinite; }
-    .animate-pulse { animation: pulse 2s ease-in-out infinite; }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    @keyframes slideInLeft {
+      from { transform: translateX(-100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideInRight {
+      from { transform: translateX(100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    .animate-float {
+      animation: float 5s ease-in-out infinite;
+    }
+    
+    .animate-pulse {
+      animation: pulse 2s ease-in-out infinite;
+    }
     
     /* NAVBAR */
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 5%; background-color: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08); position: fixed; top: 0; left: 0; right: 0; z-index: 1000; backdrop-filter: blur(10px); }
-    .logo { font-size: 1.8rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; }
-    .logo i { margin-right: 0.5rem; font-size: 2rem; }
-    nav ul { display: flex; list-style: none; gap: 2rem; }
-    nav ul li a { text-decoration: none; color: var(--dark); font-weight: 500; transition: var(--transition); position: relative; }
-    nav ul li a:after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--gradient); transition: var(--transition); }
-    nav ul li a:hover { color: var(--primary); }
-    nav ul li a:hover:after { width: 100%; }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 5%;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo i {
+      margin-right: 0.5rem;
+      font-size: 2rem;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    nav ul li a:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient);
+      transition: var(--transition);
+    }
+    
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+    
+    nav ul li a:hover:after {
+      width: 100%;
+    }
+    
+    /* BOTÃO LOGIN/DASHBOARD */
+    .nav-button {
+      background: var(--gradient);
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-left: 1rem;
+      box-shadow: 0 4px 10px rgba(22, 101, 163, 0.2);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .nav-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(22, 101, 163, 0.3);
+    }
     
     /* CTA FLUTUANTE */
-    .floating-cta { position: fixed; bottom: 2rem; right: 2rem; background: var(--gradient); color: white; padding: 1rem 1.5rem; border-radius: 50px; box-shadow: 0 5px 20px rgba(22, 101, 163, 0.4); z-index: 999; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; cursor: pointer; transition: var(--transition); animation: pulse 2s ease-in-out infinite; }
-    .floating-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(22, 101, 163, 0.5); }
+    .floating-cta {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--gradient);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      box-shadow: 0 5px 20px rgba(22, 101, 163, 0.4);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    .floating-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(22, 101, 163, 0.5);
+    }
     
     /* HERO SECTION */
-    .hero { display: flex; align-items: center; padding: 8rem 5% 5rem; background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%); color: var(--dark); min-height: 90vh; position: relative; overflow: hidden; }
-    .hero:before { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(22, 101, 163, 0.03)"/></svg>'); background-size: cover; }
-    .hero-content { flex: 1; max-width: 600px; z-index: 2; animation: slideInLeft 1s ease-out; }
-    .hero h1 { font-size: 3.2rem; margin-bottom: 1.5rem; line-height: 1.2; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero p { font-size: 1.3rem; margin-bottom: 2.5rem; color: var(--gray); }
-    .hero-stats { display: flex; gap: 2rem; margin-top: 3rem; }
-    .hero-stat { text-align: center; }
-    .hero-stat-value { font-size: 2.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
-    .hero-stat-label { color: var(--gray); font-size: 0.9rem; }
+    .hero {
+      display: flex;
+      align-items: center;
+      padding: 8rem 5% 5rem;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+      color: var(--dark);
+      min-height: 90vh;
+      position: relative;
+      overflow: hidden;
+    }
     
-    /* BOTÕES HERO */
-    .hero-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; }
-    .hero-buttons button { padding: 1rem 2.5rem; font-size: 1.1rem; border: none; border-radius: var(--border-radius); background: var(--gradient); color: white; cursor: pointer; transition: var(--transition); font-weight: 600; box-shadow: 0 4px 15px rgba(22, 101, 163, 0.3); display: inline-flex; align-items: center; gap: 0.5rem; }
-    .hero-buttons button:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(22, 101, 163, 0.4); }
+    .hero:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(22, 101, 163, 0.03)"/></svg>');
+      background-size: cover;
+    }
     
-    /* RESTO DO CSS */
-    /* Aqui mantém exatamente todo o CSS original que você já tinha (benefits, steps, parceiros, testimonials, faq, form-section, footer, popup, responsividade) */
+    .hero-content {
+      flex: 1;
+      max-width: 600px;
+      z-index: 2;
+      animation: slideInLeft 1s ease-out;
+    }
+    
+    .hero h1 {
+      font-size: 3.2rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2.5rem;
+      color: var(--gray);
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .hero button {
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: var(--border-radius);
+      background: var(--gradient);
+      color: white;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(22, 101, 163, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .hero button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(22, 101, 163, 0.4);
+    }
+    
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .hero-stat {
+      text-align: center;
+    }
+    
+    .hero-stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .hero-stat-label {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    
+    /* BENEFÍCIOS */
+    .benefits {
+      padding: 6rem 5%;
+      background-color: white;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+    
+    .section-title p {
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+    
+    .card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-top: 4px solid;
+      border-image: var(--gradient);
+      border-image-slice: 1;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    
+    .card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient);
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, #f8fafc 0%, #e4edf5 100%);
+    }
+    
+    .card-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    
+    .card p {
+      color: var(--gray);
+    }
+    
+    /* COMO FUNCIONA */
+    .how-it-works {
+      padding: 6rem 5%;
+      background: linear-gradient(135deg, #f8fafc 0%, #e4edf5 100%);
+    }
+    
+    .steps {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .step {
+      flex: 1;
+      min-width: 250px;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .step-number {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 5px 15px rgba(22, 101, 163, 0.3);
+    }
+    
+    .step h3 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    
+    .step p {
+      color: var(--gray);
+    }
+    
+    /* SEÇÃO DE PLANOS */
+    .pricing {
+      padding: 6rem 5%;
+      background: white;
+    }
+    
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+    
+    .pricing-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-top: 4px solid;
+      border-image: var(--gradient);
+      border-image-slice: 1;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    
+    .pricing-card.featured {
+      transform: scale(1.05);
+      border-image: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+      border-image-slice: 1;
+    }
+    
+    .pricing-card.featured:before {
+      content: 'MAIS POPULAR';
+      position: absolute;
+      top: 20px;
+      right: -35px;
+      background: var(--secondary);
+      color: white;
+      padding: 0.5rem 3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transform: rotate(45deg);
+    }
+    
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    
+    .pricing-card.featured:hover {
+      transform: scale(1.05) translateY(-10px);
+    }
+    
+    .pricing-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .pricing-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    
+    .price {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .price-period {
+      color: var(--gray);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 2.5rem;
+      text-align: left;
+    }
+    
+    .pricing-features li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .pricing-features li i {
+      color: var(--secondary);
+    }
+    
+    .pricing-button {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: var(--border-radius);
+      background: var(--gradient);
+      color: white;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(22, 101, 163, 0.3);
+    }
+    
+    .pricing-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(22, 101, 163, 0.4);
+    }
+    
+    .pricing-button.secondary {
+      background: white;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .pricing-button.secondary:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .trial-info {
+      text-align: center;
+      margin-top: 3rem;
+      padding: 2rem;
+      background: var(--light);
+      border-radius: var(--border-radius);
+    }
+    
+    .trial-info h3 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    
+    .trial-info p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+    
+    /* PARCEIROS */
+    .parceiros {
+      padding: 6rem 5%;
+      background: white;
+    }
+    
+    .logos {
+      width: 100%;
+      overflow: hidden;
+      padding: 2rem 0;
+      position: relative;
+    }
+    
+    .logos:before, .logos:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 100%;
+      z-index: 2;
+    }
+    
+    .logos:before {
+      left: 0;
+      background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+    }
+    
+    .logos:after {
+      right: 0;
+      background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+    }
+    
+    .logos-slide {
+      display: flex;
+      animation: scroll 30s linear infinite;
+      gap: 4rem;
+    }
+    
+    .logos-slide img {
+      height: 60px;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: var(--transition);
+    }
+    
+    .logos-slide img:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    
+    /* DEPOIMENTOS */
+    .testimonials {
+      padding: 6rem 5%;
+      background: var(--gradient);
+      color: white;
+    }
+    
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: var(--border-radius);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .testimonial-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+      color: white;
+    }
+    
+    .testimonial-content {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    
+    .testimonial-author {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .testimonial-role {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    /* FAQ */
+    .faq {
+      padding: 6rem 5%;
+      background: white;
+    }
+    
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      margin-bottom: 1.5rem;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .faq-question {
+      background: var(--light);
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    .faq-question:hover {
+      background: var(--gray-light);
+    }
+    
+    .faq-answer {
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    
+    .faq-answer.active {
+      padding: 1.5rem;
+      max-height: 500px;
+    }
+    
+    .faq-toggle {
+      transition: var(--transition);
+    }
+    
+    .faq-toggle.rotate {
+      transform: rotate(180deg);
+    }
+    
+    /* FORMULÁRIO */
+    .form-section {
+      padding: 6rem 5%;
+      background: var(--gradient);
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .form-section:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+      background-size: cover;
+    }
+    
+    .form-section h2 {
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 2;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    
+    input, textarea {
+      padding: 1.2rem;
+      border-radius: var(--border-radius);
+      border: none;
+      font-size: 1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: var(--transition);
+    }
+    
+    input:focus, textarea:focus {
+      outline: none;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      transform: translateY(-2px);
+    }
+    
+    .input-error {
+      border: 2px solid #ff6b6b;
+    }
+    
+    .error-message {
+      color: #ff6b6b;
+      font-size: 0.9rem;
+      text-align: left;
+      margin-top: -1rem;
+    }
+    
+    button.submit {
+      background: white;
+      color: var(--primary);
+      padding: 1.2rem;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    button.submit:hover {
+      background: var(--light);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .contact-button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      background: white;
+      color: var(--primary);
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    .contact-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* POP-UP */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--secondary);
+      color: white;
+      padding: 1.5rem 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      z-index: 2000;
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 5% 2rem;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-column h3 {
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 0.8rem;
+    }
+    
+    .footer-column a {
+      color: #ccc;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .footer-column a:hover {
+      color: white;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+    
+    /* RESPONSIVIDADE */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      
+      nav ul {
+        margin-top: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
+      
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 7rem 5% 4rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-buttons {
+        justify-content: center;
+      }
+      
+      .hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .pricing-card.featured {
+        transform: scale(1);
+      }
+      
+      .pricing-card.featured:hover {
+        transform: translateY(-10px);
+      }
+      
+      .steps {
+        flex-direction: column;
+      }
+      
+      .logos-slide {
+        gap: 2rem;
+      }
+      
+      .logos-slide img {
+        height: 40px;
+      }
+      
+      .floating-cta {
+        bottom: 1rem;
+        right: 1rem;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -102,17 +1000,17 @@
     <ul>
       <li><a href="#benefits">Benefícios</a></li>
       <li><a href="#how-it-works">Como Funciona</a></li>
+      <li><a href="#pricing">Planos</a></li>
       <li><a href="#parceiros">Parceiros</a></li>
       <li><a href="#testimonials">Depoimentos</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contato">Contato</a></li>
     </ul>
   </nav>
 
   <!-- CTA FLUTUANTE -->
-  <div class="floating-cta" onclick="document.getElementById('contato').scrollIntoView({behavior: 'smooth'})">
+  <div class="floating-cta" onclick="document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})">
     <i class="fas fa-calendar-check"></i>
-    Solicitar Demo
+    Teste Grátis
   </div>
 
   <!-- HERO -->
@@ -120,15 +1018,13 @@
     <div class="hero-content">
       <h1>Reduza faltas e aumente a receita da sua clínica</h1>
       <p>Automatize notificações e lembretes para seus pacientes e veja a produtividade crescer com nossa plataforma inteligente.</p>
-      
-      <!-- BOTÕES HERO INCLUÍDO -->
       <div class="hero-buttons">
-        <button onclick="document.getElementById('contato').scrollIntoView({behavior: 'smooth'})">
-          Solicitar Demo <i class="fas fa-arrow-right"></i>
+        <button onclick="document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})">
+          Teste Grátis <i class="fas fa-arrow-right"></i>
         </button>
-        <button onclick="window.location.href='dashboard.html'">
-          Acessar Dashboard <i class="fas fa-tachometer-alt"></i>
-        </button>
+        <a href="/dashboard" class="nav-button" style="padding: 1rem 2.5rem;">
+          <i class="fas fa-tachometer-alt"></i> Acessar Dashboard
+        </a>
       </div>
       
       <div class="hero-stats">
@@ -148,8 +1044,437 @@
     </div>
   </section>
 
-  <!-- RESTO DO HTML -->
-  <!-- Aqui mantém exatamente todo o restante do seu HTML original: benefits, how-it-works, parceiros, testimonials, faq, contato, footer, popup, scripts -->
+  <!-- BENEFÍCIOS -->
+  <section class="benefits" id="benefits">
+    <div class="section-title">
+      <h2>Benefícios Comprovados</h2>
+      <p>Descubra como a Ambicco pode transformar a gestão da sua clínica</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="card animate-fade-in">
+        <div class="card-icon">
+          <i class="fas fa-user-clock"></i>
+        </div>
+        <h3>Redução de Faltas</h3>
+        <p>Lembretes automáticos garantem presença e organização, reduzindo faltas em até 70%.</p>
+      </div>
+      <div class="card animate-fade-in" style="animation-delay: 0.2s;">
+        <div class="card-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3>Aumento de Receita</h3>
+        <p>Pacientes mais pontuais resultam em mais faturamento e melhor aproveitamento da agenda.</p>
+      </div>
+      <div class="card animate-fade-in" style="animation-delay: 0.4s;">
+        <div class="card-icon">
+          <i class="fas fa-robot"></i>
+        </div>
+        <h3>Gestão Inteligente</h3>
+        <p>Controle tudo em uma única plataforma intuitiva com automações que poupam tempo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="section-title">
+      <h2>Como Funciona</h2>
+      <p>Veja como é simples automatizar sua clínica em 3 passos</p>
+    </div>
+    <div class="steps">
+      <div class="step animate-fade-in">
+        <div class="step-number">1</div>
+        <h3>Cadastro de Pacientes</h3>
+        <p>Importe sua base de pacientes ou cadastre manualmente em nossa plataforma segura.</p>
+      </div>
+      <div class="step animate-fade-in" style="animation-delay: 0.2s;">
+        <div class="step-number">2</div>
+        <h3>Lembretes Automáticos</h3>
+        <p>Configure os horários e a plataforma envia lembretes por SMS, WhatsApp ou e-mail.</p>
+      </div>
+      <div class="step animate-fade-in" style="animation-delay: 0.4s;">
+        <div class="step-number">3</div>
+        <h3>Relatórios e Análises</h3>
+        <p>Acompanhe faltas, comparecimentos e receita em tempo real com dashboards intuitivos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO DE PLANOS -->
+  <section class="pricing" id="pricing">
+    <div class="section-title">
+      <h2>Planos e Preços</h2>
+      <p>Escolha o plano ideal para sua clínica e comece seu teste gratuito de 7 dias</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card animate-fade-in">
+        <div class="pricing-icon">
+          <i class="fas fa-user-md"></i>
+        </div>
+        <h3>Básico</h3>
+        <div class="price">R$ 97<span>/mês</span></div>
+        <div class="price-period">Ideal para clínicas pequenas</div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> Até 100 pacientes</li>
+          <li><i class="fas fa-check"></i> Lembretes por WhatsApp</li>
+          <li><i class="fas fa-check"></i> Lembretes por SMS</li>
+          <li><i class="fas fa-check"></i> Dashboard básico</li>
+          <li><i class="fas fa-times"></i> Relatórios avançados</li>
+          <li><i class="fas fa-times"></i> Integração com agenda</li>
+        </ul>
+        <button class="pricing-button" onclick="startTrial('basico')">
+          Começar Teste Grátis
+        </button>
+      </div>
+      
+      <div class="pricing-card featured animate-fade-in" style="animation-delay: 0.2s;">
+        <div class="pricing-icon">
+          <i class="fas fa-hospital"></i>
+        </div>
+        <h3>Profissional</h3>
+        <div class="price">R$ 197<span>/mês</span></div>
+        <div class="price-period">Para clínicas em crescimento</div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> Até 500 pacientes</li>
+          <li><i class="fas fa-check"></i> Lembretes por WhatsApp</li>
+          <li><i class="fas fa-check"></i> Lembretes por SMS</li>
+          <li><i class="fas fa-check"></i> Dashboard completo</li>
+          <li><i class="fas fa-check"></i> Relatórios avançados</li>
+          <li><i class="fas fa-check"></i> Integração com agenda</li>
+        </ul>
+        <button class="pricing-button" onclick="startTrial('profissional')">
+          Começar Teste Grátis
+        </button>
+      </div>
+      
+      <div class="pricing-card animate-fade-in" style="animation-delay: 0.4s;">
+        <div class="pricing-icon">
+          <i class="fas fa-clinic-medical"></i>
+        </div>
+        <h3>Enterprise</h3>
+        <div class="price">R$ 397<span>/mês</span></div>
+        <div class="price-period">Para grandes clínicas</div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> Pacientes ilimitados</li>
+          <li><i class="fas fa-check"></i> Lembretes por WhatsApp</li>
+          <li><i class="fas fa-check"></i> Lembretes por SMS</li>
+          <li><i class="fas fa-check"></i> Dashboard premium</li>
+          <li><i class="fas fa-check"></i> Relatórios personalizados</li>
+          <li><i class="fas fa-check"></i> Integração completa</li>
+        </ul>
+        <button class="pricing-button" onclick="startTrial('enterprise')">
+          Começar Teste Grátis
+        </button>
+      </div>
+    </div>
+    
+    <div class="trial-info">
+      <h3>Teste Gratuito de 7 Dias</h3>
+      <p>Experimente todos os recursos da plataforma sem compromisso. Após 7 dias, você precisará adicionar seu cartão de crédito para continuar usando o serviço.</p>
+      <button class="pricing-button" onclick="document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})">
+        <i class="fas fa-play-circle"></i> Iniciar Teste Grátis
+      </button>
+    </div>
+  </section>
+
+  <!-- PARCEIROS -->
+  <section class="parceiros" id="parceiros">
+    <div class="section-title">
+      <h2>Nossos Parceiros</h2>
+      <p>Junte-se a centenas de clínicas que já transformaram sua gestão</p>
+    </div>
+    <div class="logos">
+      <div class="logos-slide">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Apollo_Hospitals_Logo.png" alt="Apollo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Cleveland_Clinic_logo.svg" alt="Cleveland">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Mayo_Clinic_logo.svg" alt="Mayo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Hospital_Alem%C3%A3o_Oswaldo_Cruz_logo.png" alt="Oswaldo Cruz">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Hopital_logo_example.svg" alt="Clínica Fictícia">
+        <!-- Duplicando para efeito de scroll infinito -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Apollo_Hospitals_Logo.png" alt="Apollo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Cleveland_Clinic_logo.svg" alt="Cleveland">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Mayo_Clinic_logo.svg" alt="Mayo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Hospital_Alem%C3%A3o_Oswaldo_Cruz_logo.png" alt="Oswaldo Cruz">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Hopital_logo_example.svg" alt="Clínica Fictícia">
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="testimonials" id="testimonials">
+    <div class="section-title">
+      <h2>O Que Nossos Clientes Dizem</h2>
+      <p>Confira depoimentos de clínicas que já usam a Ambicco</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card animate-fade-in">
+        <div class="testimonial-avatar">
+          <i class="fas fa-user-md"></i>
+        </div>
+        <div class="testimonial-content">
+          "Reduzimos nossas faltas em 65% no primeiro mês. A Ambicco transformou completamente nossa gestão!"
+        </div>
+        <div class="testimonial-author">Dra. Maria Silva</div>
+        <div class="testimonial-role">Clínica Dermatológica, São Paulo</div>
+      </div>
+      <div class="testimonial-card animate-fade-in" style="animation-delay: 0.2s;">
+        <div class="testimonial-avatar">
+          <i class="fas fa-tooth"></i>
+        </div>
+        <div class="testimonial-content">
+          "A receita da nossa clínica aumentou 40% com os lembretes automáticos. Os pacientes adoram a praticidade."
+        </div>
+        <div class="testimonial-author">Dr. João Pereira</div>
+        <div class="testimonial-role">Odontoclin, Rio de Janeiro</div>
+      </div>
+      <div class="testimonial-card animate-fade-in" style="animation-delay: 0.4s;">
+        <div class="testimonial-avatar">
+          <i class="fas fa-stethoscope"></i>
+        </div>
+        <div class="testimonial-content">
+          "A plataforma é tão intuitiva que nossa equipe se adaptou em um dia. Agora temos muito mais tempo para focar nos pacientes."
+        </div>
+        <div class="testimonial-author">Dra. Ana Costa</div>
+        <div class="testimonial-role">Clínica Médica Integrada, Brasília</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="section-title">
+      <h2>Perguntas Frequentes</h2>
+      <p>Tire suas dúvidas sobre a Ambicco</p>
+    </div>
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question">
+          Como funciona o teste gratuito?
+          <i class="fas fa-chevron-down faq-toggle"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Oferecemos 7 dias de teste gratuito com acesso completo a todos os recursos da plataforma. Após esse período, você precisará adicionar um cartão de crédito para continuar usando o serviço.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          Quando serei cobrado?
+          <i class="fas fa-chevron-down faq-toggle"></i>
+        </div>
+        <div class="faq-answer">
+          <p>A cobrança só ocorre após os 7 dias de teste. Se você cancelar antes do final do período de teste, não será cobrado nada.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          Posso mudar de plano depois?
+          <i class="fas fa-chevron-down faq-toggle"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Sim, você pode mudar de plano a qualquer momento. A alteração será refletida na próxima fatura.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          É seguro para dados de pacientes?
+          <i class="fas fa-chevron-down faq-toggle"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Sim, seguimos todas as normas da LGPD. Seus dados são criptografados e armazenados com segurança em servidores no Brasil.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULÁRIO -->
+  <section class="form-section" id="contato">
+    <h2>Entre em Contato</h2>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Seu nome" required>
+      <input type="email" id="email" placeholder="Seu email" required>
+      <textarea id="message" rows="4" placeholder="Sua mensagem" required></textarea>
+      <button type="submit" class="submit">Enviar Mensagem</button>
+    </form>
+    
+    <div class="contact-buttons">
+      <a href="https://wa.me/5511999999999" class="contact-button" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+      <a href="tel:+5511999999999" class="contact-button">
+        <i class="fas fa-phone"></i> Ligar Agora
+      </a>
+      <a href="mailto:contato@ambicco.com" class="contact-button">
+        <i class="fas fa-envelope"></i> E-mail
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Ambicco</h3>
+        <p>Tecnologia avançada para transformar a gestão de clínicas médicas.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Produto</h3>
+        <ul>
+          <li><a href="#benefits">Benefícios</a></li>
+          <li><a href="#how-it-works">Como Funciona</a></li>
+          <li><a href="#pricing">Planos</a></li>
+          <li><a href="#testimonials">Depoimentos</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contato</h3>
+        <ul>
+          <li><i class="fas fa-phone"></i> (11) 99999-9999</li>
+          <li><i class="fas fa-envelope"></i> contato@ambicco.com</li>
+          <li><i class="fas fa-map-marker-alt"></i> São Paulo, SP</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2023 Ambicco. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- POP-UP -->
+  <div class="popup" id="popup">Mensagem enviada com sucesso!</div>
+
+  <!-- Script externo -->
+  <script src="js/main.js"></script>
   
+  <script>
+    // Formulário com validação
+    const form = document.getElementById('contactForm');
+    const popup = document.getElementById('popup');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      
+      // Validação básica
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const message = document.getElementById('message');
+      
+      let isValid = true;
+      
+      // Reset erros
+      document.querySelectorAll('.input-error').forEach(el => {
+        el.classList.remove('input-error');
+      });
+      document.querySelectorAll('.error-message').forEach(el => {
+        el.remove();
+      });
+      
+      // Validação de nome
+      if (!name.value.trim()) {
+        name.classList.add('input-error');
+        name.insertAdjacentHTML('afterend', '<div class="error-message">Por favor, insira seu nome</div>');
+        isValid = false;
+      }
+      
+      // Validação de email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email.value.trim() || !emailRegex.test(email.value)) {
+        email.classList.add('input-error');
+        email.insertAdjacentHTML('afterend', '<div class="error-message">Por favor, insira um email válido</div>');
+        isValid = false;
+      }
+      
+      // Validação de mensagem
+      if (!message.value.trim()) {
+        message.classList.add('input-error');
+        message.insertAdjacentHTML('afterend', '<div class="error-message">Por favor, insira sua mensagem</div>');
+        isValid = false;
+      }
+      
+      if (isValid) {
+        popup.style.display = 'block';
+        setTimeout(() => { popup.style.display = 'none'; }, 3000);
+        form.reset();
+      }
+    });
+
+    // Função para iniciar teste
+    function startTrial(plan) {
+      alert(`Teste gratuito de 7 dias iniciado para o plano ${plan.toUpperCase()}! Você será redirecionado para o dashboard.`);
+      // Redirecionar para dashboard
+      window.location.href = '/dashboard';
+    }
+
+    // Animação estatísticas
+    function animateValue(id, start, end, duration, suffix = '') {
+      let range = end - start;
+      let current = start;
+      let increment = end > start ? 1 : -1;
+      let stepTime = Math.abs(Math.floor(duration / range));
+      let obj = document.getElementById(id);
+      let timer = setInterval(function() {
+        current += increment;
+        obj.textContent = current + suffix;
+        if (current == end) {
+          clearInterval(timer);
+        }
+      }, stepTime);
+    }
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const toggle = question.querySelector('.faq-toggle');
+        
+        // Fechar outras respostas
+        document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
+          if (otherAnswer !== answer) {
+            otherAnswer.classList.remove('active');
+            otherAnswer.previousElementSibling.querySelector('.faq-toggle').classList.remove('rotate');
+          }
+        });
+        
+        // Alternar resposta atual
+        answer.classList.toggle('active');
+        toggle.classList.toggle('rotate');
+      });
+    });
+
+    // Iniciar animações quando a página carregar
+    document.addEventListener('DOMContentLoaded', function() {
+      animateValue("stat1", 0, 350, 2000);
+      animateValue("stat2", 0, 40, 2000, '%');
+      animateValue("stat3", 0, 1200, 2000);
+      
+      // Animações de scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+      
+      // Observar elementos para animação
+      document.querySelectorAll('.animate-fade-in').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
+    });
+  </script>
 </body>
 </html>
