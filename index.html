@@ -1029,15 +1029,15 @@
       
       <div class="hero-stats">
         <div class="hero-stat animate-fade-in">
-          <div class="hero-stat-value" id="stat1">0</div>
+          <div class="hero-stat-value">150</div>
           <div class="hero-stat-label">Faltas Reduzidas</div>
         </div>
         <div class="hero-stat animate-fade-in" style="animation-delay: 0.2s;">
-          <div class="hero-stat-value" id="stat2">0%</div>
+          <div class="hero-stat-value">25%</div>
           <div class="hero-stat-label">Aumento de Receita</div>
         </div>
         <div class="hero-stat animate-fade-in" style="animation-delay: 0.4s;">
-          <div class="hero-stat-value" id="stat3">0</div>
+          <div class="hero-stat-value">350</div>
           <div class="hero-stat-label">Clientes Satisfeitos</div>
         </div>
       </div>
@@ -1410,22 +1410,6 @@
       window.location.href = '/dashboard';
     }
 
-    // Animação estatísticas
-    function animateValue(id, start, end, duration, suffix = '') {
-      let range = end - start;
-      let current = start;
-      let increment = end > start ? 1 : -1;
-      let stepTime = Math.abs(Math.floor(duration / range));
-      let obj = document.getElementById(id);
-      let timer = setInterval(function() {
-        current += increment;
-        obj.textContent = current + suffix;
-        if (current == end) {
-          clearInterval(timer);
-        }
-      }, stepTime);
-    }
-
     // FAQ Accordion
     document.querySelectorAll('.faq-question').forEach(question => {
       question.addEventListener('click', () => {
@@ -1448,10 +1432,6 @@
 
     // Iniciar animações quando a página carregar
     document.addEventListener('DOMContentLoaded', function() {
-      animateValue("stat1", 0, 350, 2000);
-      animateValue("stat2", 0, 40, 2000, '%');
-      animateValue("stat3", 0, 1200, 2000);
-      
       // Animações de scroll
       const observerOptions = {
         threshold: 0.1,
